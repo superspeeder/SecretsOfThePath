@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0r4wlctera6t"]
+
+[ext_resource type="Script" path="res://scripts/area_activator.gd" id="1_lspqo"]
+
+[node name="LightActivator" type="Area2D"]
+script = ExtResource("1_lspqo")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

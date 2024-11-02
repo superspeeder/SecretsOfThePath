@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://deceem504qqy7"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_btqen"]
+[ext_resource type="Texture2D" uid="uid://l38xf5l7yfu3" path="res://textures/player.png" id="2_hq7o7"]
+[ext_resource type="Texture2D" uid="uid://4ojgeftid85" path="res://textures/2d_lights_and_shadows_neutral_point_light.webp" id="3_8kpni"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vshqf"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oq3s6"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqkim"]
+size = Vector2(14, 14)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r45tp"]
+polygon = PackedVector2Array(-8, -4, -8, -28, 8, -28, 8, -4)
+
+[node name="Player" type="CharacterBody2D"]
+visibility_layer = 4
+script = ExtResource("1_btqen")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+light_mask = 3
+visibility_layer = 4
+z_index = 1
+material = SubResource("CanvasItemMaterial_vshqf")
+position = Vector2(0, -4)
+texture = ExtResource("2_hq7o7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+light_mask = 0
+visibility_layer = 4
+z_index = 1
+material = SubResource("CanvasItemMaterial_oq3s6")
+position = Vector2(0, -4)
+texture = ExtResource("2_hq7o7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gqkim")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+shadow_enabled = true
+texture = ExtResource("3_8kpni")
+texture_scale = 0.2
+height = 6.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, 12)
+occluder = SubResource("OccluderPolygon2D_r45tp")
+occluder_light_mask = 18

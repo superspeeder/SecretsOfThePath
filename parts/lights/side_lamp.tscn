@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://thrsh82veamd"]
+
+[ext_resource type="Script" path="res://parts/lights/side_lamp.gd" id="1_bl3qh"]
+[ext_resource type="Texture2D" uid="uid://4ojgeftid85" path="res://textures/2d_lights_and_shadows_neutral_point_light.webp" id="2_fq6m3"]
+
+[node name="SideLamp" type="Sprite2D"]
+centered = false
+offset = Vector2(0, -4)
+script = ExtResource("1_bl3qh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.819608, 0.639216, 1)
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("2_fq6m3")
+texture_scale = 0.8
+height = 10.0
